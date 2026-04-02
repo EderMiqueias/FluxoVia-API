@@ -7,10 +7,10 @@ Esta API simula um sistema de monitoramento de uma rodovia, construída utilizan
 ## 🛠️ Tecnologias Utilizadas
 
 * **Linguagem:** Python 3.8+
-* **Framework Web:** FastAPI
-* **Servidor ASGI:** Uvicorn
+* **Framework Web:** [FastAPI](https://pypi.org/project/fastapi/)
+* **Servidor ASGI:** [Uvicorn](https://pypi.org/project/uvicorn/)
 * **Banco de Dados:** PostgreSQL
-* **Driver do Banco:** Psycopg2
+* **Driver do Banco:** [Psycopg2](https://pypi.org/project/psycopg2/)
 * **Infraestrutura:** Docker & Docker Compose
 
 

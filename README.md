@@ -3,7 +3,7 @@
 Bem-vindo ao repositório do **ViaFlow API**, o projeto prático da nossa oficina de desenvolvimento de software sustentável. 
 
 Esta API simula um sistema de monitoramento de uma rodovia, construída utilizando **Python**, **FastAPI** e **PostgreSQL**. O objetivo é demonstrar como estruturar código pronto para produção, garantindo manutenibilidade e escalabilidade.
-
+teste
 ## 🛠️ Tecnologias Utilizadas
 
 * **Linguagem:** Python 3.8+

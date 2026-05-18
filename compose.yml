@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+  rabbitmq:
+    image: rabbitmq:3-management-alpine
+    container_name: fluxovia_rabbitmq
+    ports:
+      - "5672:5672" # Para usar o RabbitMQ como broker de mensagens
+      - "15672:15672" # Para acessar a interface de gerenciamento do RabbitMQ
+    restart: always
+    environment:
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq
+    networks:
+      - fluxovia_network
+
+  worker:
+    build:
+      context: .
+      dockerfile: worker/Dockerfile
+    container_name: fluxovia_worker
+    restart: always
+    depends_on:
+      - rabbitmq
+    env_file:
+      - .env
+    networks:
+      - fluxovia_network
+
+volumes:
+  rabbitmq_data:
+
+networks:
+  fluxovia_network:
+    driver: bridge

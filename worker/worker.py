@@ -8,16 +8,16 @@ from dotenv import load_dotenv
 load_dotenv()
 
 
-class Config:
-    RABBITMQ_URL = os.getenv("RABBITMQ_URL", "amqp://guest:guest@rabbitmq:5672//")
-    QUEUE_NAME = os.getenv("RABBITMQ_QUEUE", "tickets_queue")
-    API_BASE_URL = os.getenv("API_BASE_URL")
-    AUTH_EMAIL = os.getenv("API_AUTH_EMAIL")
-    AUTH_PASSWORD = os.getenv("API_AUTH_PASSWORD")
+class TicketsAPIConfig:
+    RABBITMQ_URL = os.getenv("RABBITMQ_URL")
+    QUEUE_NAME = os.getenv("RABBITMQ_QUEUE")
+    API_BASE_URL = os.getenv("TICKETS_API_BASE_URL")
+    AUTH_EMAIL = os.getenv("AUTH_EMAIL")
+    AUTH_PASSWORD = os.getenv("AUTH_PASSWORD")
 
 
 class TicketWorker:
-    def __init__(self, config=Config):
+    def __init__(self, config=TicketsAPIConfig):
         """
         Inicializa a instância do TicketWorker com as configurações necessárias.
         

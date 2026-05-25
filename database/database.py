@@ -6,9 +6,6 @@ from typing import Tuple
 from config import Config
 
 
-# TODO: usar print é útil para debug, mas para deploy não serve de nada. Que tal um logger?
-
-
 class Database(abc.ABC):
     """
     Classe base abstrata (ABC) que define o contrato (interface) para implementações

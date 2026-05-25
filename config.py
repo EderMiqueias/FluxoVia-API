@@ -23,3 +23,8 @@ class Config:
         dbname: str = os.environ.get('DB_NAME')
         user: str = os.environ.get('DB_USER')
         password: str = os.environ.get('DB_PASSWORD')
+        url: str = f"postgresql://{user}:{password}@{host}:{port}/{dbname}"
+
+        pool_size: int = int(os.environ.get('DB_POOL_SIZE', 10))
+        max_overflow: int = int(os.environ.get('DB_MAX_OVERFLOW', 20))
+        pool_pre_ping: bool = os.environ.get('DB_POOL_PRE_PING', 'True').lower() == 'true'

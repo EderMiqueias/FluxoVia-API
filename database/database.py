@@ -6,9 +6,9 @@ from config import Config
 # O SQLAlchemy se encarrega de gerenciar o Pool de conexões de forma segura aqui.
 engine = create_engine(
     Config.Database.url,
-    pool_size=Config.Database.pool_size,          # Mantém até 10 conexões abertas prontas para uso
-    max_overflow=Config.Database.max_overflow,       # Permite abrir mais 20 conexões em picos de acesso
-    pool_pre_ping=Config.Database.pool_pre_ping     # Testa a conexão antes de usar
+    pool_size=Config.Database.pool_size,                # Quantidade de conexões a manter no pool
+    max_overflow=Config.Database.max_overflow,          # Quantas conexões extras podem ser criadas além do pool_size
+    pool_pre_ping=Config.Database.pool_pre_ping         # Testa a conexão antes de usar
 )
 
 # 2. O gerador de Sessions (Fábrica)

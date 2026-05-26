@@ -5,10 +5,10 @@ from app.schemas.ticket_schema import TicketSchema
 # TODO: Implementar a lógica de negócio para o serviço de leitura de radar, utilizando o repositório para persistência e consulta dos dados.
 
 class RadarReadingService:
-    radar_reading_repository: RadarReadingRepository
+    repository: RadarReadingRepository
 
     def __init__(self, radar_reading_repository: RadarReadingRepository):
-        self.radar_reading_repository = radar_reading_repository
+        self.repository = radar_reading_repository
 
     def _generate_ticket_pdf(self, payload: TicketSchema):
         pass

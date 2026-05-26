@@ -56,23 +56,25 @@ class RadarReadingRepository:
         self.session.flush()  # Flush para gerar o ID sem commitar
         self.session.refresh(reading)  # Recarrega para obter os dados do servidor
         return reading
-
-    def get_by_id(self, reading_id: int) -> Optional[RadarReading]:
+    
+    def get_by_id_aparelho_medidor(self, id_aparelho_medidor: str) -> Optional[RadarReading]:
         """
-        Recupera um registro de leitura por seu ID.
+        Recupera o registro mais recente de leitura para um aparelho de medição específico.
         
         Args:
-            reading_id: Identificador único da leitura.
+            id_aparelho_medidor: Identificador do aparelho de medição.
             
         Returns:
-            RadarReading se encontrado, None caso contrário.
+            RadarReading mais recente para o aparelho, ou None se não encontrado.
             
         Raises:
             SQLAlchemyError: Em caso de erro na execução da query.
         """
-        query = select(RadarReading).where(RadarReading.id == reading_id)
+        # TODO: Implementar a query para buscar todos os registros a partir do id_aparelho_medidor e remover o raise abaixo
+        raise NotImplementedError("Método get_by_id_aparelho_medidor ainda não implementado")
+        query = {  }
         result = self.session.execute(query)
-        return result.scalars().first()
+        return result.scalars().all()
 
     def get_by_placa(
         self,
@@ -98,36 +100,6 @@ class RadarReadingRepository:
         query = (
             select(RadarReading)
             .where(RadarReading.placa == placa)
-            .order_by(desc(RadarReading.created_at))
-            .limit(limit)
-        )
-        result = self.session.execute(query)
-        return result.scalars().all()
-
-    def get_latest_by_aparelho(
-        self,
-        id_aparelho_medidor: str,
-        limit: int = 100,
-    ) -> list[RadarReading]:
-        """
-        Recupera os registros mais recentes de um aparelho de medição específico.
-        
-        Os resultados são ordenados pela data de criação em ordem decrescente
-        (mais recentes primeiro).
-        
-        Args:
-            id_aparelho_medidor: Identificador do aparelho de medição.
-            limit: Número máximo de registros a retornar (padrão: 100).
-            
-        Returns:
-            Lista de RadarReading do aparelho, ordenados por data decrescente.
-            
-        Raises:
-            SQLAlchemyError: Em caso de erro na execução da query.
-        """
-        query = (
-            select(RadarReading)
-            .where(RadarReading.id_aparelho_medidor == id_aparelho_medidor)
             .order_by(desc(RadarReading.created_at))
             .limit(limit)
         )

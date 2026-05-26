@@ -28,3 +28,7 @@ class Config:
         pool_size: int = int(os.environ.get('DB_POOL_SIZE', 10))
         max_overflow: int = int(os.environ.get('DB_MAX_OVERFLOW', 20))
         pool_pre_ping: bool = os.environ.get('DB_POOL_PRE_PING', 'True').lower() == 'true'
+
+    class RabbitMQ:
+        url: str = os.environ.get('RABBITMQ_URL', 'amqp://guest:guest@localhost:5672//')
+        queue: str = os.environ.get('RABBITMQ_QUEUE', 'tickets')

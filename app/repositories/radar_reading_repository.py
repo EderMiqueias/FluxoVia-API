@@ -2,7 +2,7 @@ from decimal import Decimal
 from typing import Optional
 
 from sqlalchemy import desc, select
-from sqlalchemy.ext.asyncio import Session
+from sqlalchemy.orm import Session
 
 from app.models.radar_reading import RadarReading
 

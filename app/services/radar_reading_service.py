@@ -14,6 +14,9 @@ class RadarReadingService:
         pass
 
     def create_radar_reading(self, payload: RadarReadingSchema):
+        # TODO: 
+        # 1. Rgistrar a leitura do radar utilizando o repositório.
+        # 2. Gerar o ticket em PDF utilizando os dados da leitura do radar.
         raise NotImplementedError("Método create_radar_reading ainda não implementado")
 
     def consult_radar_reading_by_id_aparelho_medidor(self, id_aparelho_medidor: str):

@@ -28,6 +28,8 @@ services:
       - .env
     networks:
       - fluxovia_network
+  
+  # TODO: Adicionar o serviço da API FastAPI aqui, configurando a construção da imagem, as portas expostas e as dependências necessárias
 
 volumes:
   rabbitmq_data:
